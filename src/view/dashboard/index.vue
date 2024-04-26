@@ -60,6 +60,9 @@
                 href="https://plugin.gin-vue-admin.com/#/layout/home"
               >https://plugin.gin-vue-admin.com</a>
             </div>
+            <div class="gva-top-card-left-item">
+              token值: {{token}}
+            </div>
           </div>
         </div>
         <img
