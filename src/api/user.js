@@ -15,12 +15,12 @@ export const login = (data) => {
 // @Produce  application/json
 // @Param data body {username:"string",password:"string"}
 // @Router /base/captcha [post]
-export const captcha = () => {
-  return service({
-    url: '/base/captcha',
-    method: 'post'
-  })
-}
+// export const captcha = () => {
+//   return service({
+//     url: '/base/captcha',
+//     method: 'post'
+//   })
+// }
 
 // @Summary 用户注册
 // @Produce  application/json

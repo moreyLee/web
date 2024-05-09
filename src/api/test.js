@@ -9,3 +9,10 @@ export const testT = () => {
         method: 'post'
     })
 }
+export const domain = (data) => {
+    return service({
+        url: '/test/domain',
+        method: 'post',
+        data
+    })
+}

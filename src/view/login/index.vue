@@ -21,7 +21,7 @@
             </div>
             <div class="mb-9">
               <p class="text-center text-4xl font-bold">{{ $GIN_VUE_ADMIN.appName }}</p>
-              <p class="text-center text-sm font-normal text-gray-500 mt-2.5">A management platform using Golang and Vue
+              <p class="text-center text-sm font-normal text-gray-500 mt-2.5">CG运维管理系统
               </p>
             </div>
             <el-form
@@ -54,29 +54,29 @@
                   placeholder="请输入密码"
                 />
               </el-form-item>
-              <el-form-item
-                v-if="loginFormData.openCaptcha"
-                prop="captcha"
-                class="mb-6"
-              >
-                <div class="flex w-full justify-between">
-                  <el-input
-                    v-model="loginFormData.captcha"
-                    placeholder="请输入验证码"
-                    size="large"
-                    class="flex-1 mr-5"
-                  />
-                  <div class="w-1/3 h-11 bg-[#c3d4f2] rounded">
-                    <img
-                      v-if="picPath"
-                      class="w-full h-full"
-                      :src="picPath"
-                      alt="请输入验证码"
-                      @click="loginVerify()"
-                    >
-                  </div>
-                </div>
-              </el-form-item>
+<!--              <el-form-item-->
+<!--                v-if="loginFormData.openCaptcha"-->
+<!--                prop="captcha"-->
+<!--                class="mb-6"-->
+<!--              >-->
+<!--                <div class="flex w-full justify-between">-->
+<!--                  <el-input-->
+<!--                    v-model="loginFormData.captcha"-->
+<!--                    placeholder="请输入验证码"-->
+<!--                    size="large"-->
+<!--                    class="flex-1 mr-5"-->
+<!--                  />-->
+<!--                  <div class="w-1/3 h-11 bg-[#c3d4f2] rounded">-->
+<!--                    <img-->
+<!--                      v-if="picPath"-->
+<!--                      class="w-full h-full"-->
+<!--                      :src="picPath"-->
+<!--                      alt="请输入验证码"-->
+<!--                      @click="loginVerify()"-->
+<!--                    >-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </el-form-item>-->
               <el-form-item class="mb-6">
                 <el-button
                   class="shadow shadow-blue-600 h-11 w-full"
@@ -85,15 +85,15 @@
                   @click="submitForm"
                 >登 录</el-button>
               </el-form-item>
-              <el-form-item class="mb-6">
-                <el-button
-                  class="shadow shadow-blue-600 h-11 w-full"
-                  type="primary"
-                  size="large"
-                  @click="checkInit"
-                >前往初始化</el-button>
+<!--              <el-form-item class="mb-6">-->
+<!--                <el-button-->
+<!--                  class="shadow shadow-blue-600 h-11 w-full"-->
+<!--                  type="primary"-->
+<!--                  size="large"-->
+<!--                  @click="checkInit"-->
+<!--                >前往初始化</el-button>-->
 
-              </el-form-item>
+<!--              </el-form-item>-->
             </el-form>
           </div>
         </div>
@@ -153,7 +153,7 @@
 </template>
 
 <script setup>
-import { captcha } from '@/api/user'
+// import { captcha } from '@/api/user'
 import { checkDB } from '@/api/initdb'
 import BottomInfo from '@/view/layout/bottomInfo/bottomInfo.vue'
 import { reactive, ref } from 'vue'
@@ -183,19 +183,19 @@ const checkPassword = (rule, value, callback) => {
 }
 
 // 获取验证码
-const loginVerify = async() => {
-  const ele = await captcha()
-  rules.captcha.push({
-    max: ele.data.captchaLength,
-    min: ele.data.captchaLength,
-    message: `请输入${ele.data.captchaLength}位验证码`,
-    trigger: 'blur',
-  })
-  picPath.value = ele.data.picPath
-  loginFormData.captchaId = ele.data.captchaId
-  loginFormData.openCaptcha = ele.data.openCaptcha
-}
-loginVerify()
+// const loginVerify = async() => {
+//   const ele = await captcha()
+//   rules.captcha.push({
+//     max: ele.data.captchaLength,
+//     min: ele.data.captchaLength,
+//     message: `请输入${ele.data.captchaLength}位验证码`,
+//     trigger: 'blur',
+//   })
+//   picPath.value = ele.data.picPath
+//   loginFormData.captchaId = ele.data.captchaId
+//   loginFormData.openCaptcha = ele.data.openCaptcha
+// }
+// loginVerify()
 
 // 登录相关操作
 const loginForm = ref(null)
@@ -203,19 +203,19 @@ const picPath = ref('')
 const loginFormData = reactive({
   username: 'admin',
   password: '123456',
-  captcha: '',
-  captchaId: '',
-  openCaptcha: false,
+  // captcha: '',
+  // captchaId: '',
+  // openCaptcha: false,
 })
 const rules = reactive({
   username: [{ validator: checkUsername, trigger: 'blur' }],
   password: [{ validator: checkPassword, trigger: 'blur' }],
-  captcha: [
-    {
-      message: '验证码格式不正确',
-      trigger: 'blur',
-    },
-  ],
+  // captcha: [
+  //   {
+  //     message: '验证码格式不正确',
+  //     trigger: 'blur',
+  //   },
+  // ],
 })
 
 const userStore = useUserStore()
@@ -227,7 +227,7 @@ const submitForm = () => {
     if (v) {
       const flag = await login()
       if (!flag) {
-        loginVerify()
+        // loginVerify()
       }
     } else {
       ElMessage({
@@ -235,7 +235,7 @@ const submitForm = () => {
         message: '请正确填写登录信息',
         showClose: true,
       })
-      loginVerify()
+      // loginVerify()
       return false
     }
   })
