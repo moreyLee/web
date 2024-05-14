@@ -20,7 +20,9 @@
 import {ref, reactive} from 'vue'
 import {domain} from "@/api/test";
 import {ElMessage} from "element-plus";
-
+defineOptions({
+  name: 'Domain',
+})
 // 定义数据类型接口
 interface DomainInfo {
   name: string;
@@ -29,7 +31,7 @@ interface DomainInfo {
 // 定义了一个domainInfo的响应式变量
 // 其类型为 DomainInfo 描述domainInfo 的数据结构
 const domainInfo = ref<DomainInfo>({
-  name: "",
+  name: "ss123.com",
   jump_start : "true"
 })
 // 定义传入到后端的json body 中的数据  定义的数据
@@ -45,15 +47,17 @@ const submitDomain = async () => {
   // console.log("短域名", domainInfo.value)
   const resp = await domain(data)
   console.log("响应返回:", resp.data)
-  if (resp.data.result.success === true) {
+  if (resp.data.success === true) {
     ElMessage({
-      message: '创建域名成功',
+      message: domainInfo.value.name+'创建域名成功',
       type: 'success',
     })
+    console.log("zone_id", resp.data.result.id)
   }
-  if (resp.data.result.success === false) {
+  if (resp.data.success === false) {
     ElMessage({
-      message: '域名创建失败或域名已存在',
+      dangerouslyUseHTMLString: true,
+      message: domainInfo.value.name +'域名创建失败! <br/>域名已存在',
       type: 'error',
     })
   }
