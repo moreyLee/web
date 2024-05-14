@@ -18,7 +18,7 @@
 </template>
 <script setup lang="ts">
 import {ref, reactive} from 'vue'
-import {domain} from "@/api/test";
+import {domain, domainRecord} from "@/api/test";
 import {ElMessage} from "element-plus";
 defineOptions({
   name: 'Domain',
@@ -39,6 +39,13 @@ const data ={
   name: domainInfo.value.name,
   jump_start: "true"
 }
+const record = {
+  type: "A",
+  name: "@",
+  content: "114.114.114.114",
+  ttl: 1,
+  proxied: true
+}
 const rules = reactive({
   name: [{ required: true, message: '请输入短域名', trigger: 'blur' , isValidHttpUrl: true}],
 })
@@ -53,6 +60,13 @@ const submitDomain = async () => {
       type: 'success',
     })
     console.log("zone_id", resp.data.result.id)
+    const zone_id = resp.data.result.id
+    const resp = await domainRecord(zone_id, record)
+    if (resp.data.success === true) {
+      ElMessage({
+        message: resp.data.result.name +'域名'+'DNS解析A记录成功' + resp.data.result.content,
+      })
+    }
   }
   if (resp.data.success === false) {
     ElMessage({
