@@ -59,14 +59,6 @@ const submitDomain = async () => {
       message: domainInfo.value.name+'创建域名成功',
       type: 'success',
     })
-    console.log("zone_id", resp.data.result.id)
-    const zone_id = resp.data.result.id
-    const resp = await domainRecord(zone_id, record)
-    if (resp.data.success === true) {
-      ElMessage({
-        message: resp.data.result.name +'域名'+'DNS解析A记录成功' + resp.data.result.content,
-      })
-    }
   }
   if (resp.data.success === false) {
     ElMessage({
@@ -75,6 +67,17 @@ const submitDomain = async () => {
       type: 'error',
     })
   }
+  const zone_id = resp.data.result.id
+  if (zone_id != null){
+    console.log("zone_id", zone_id)
+    const resp = await domainRecord(zone_id, record)
+    if (resp.data.success === true) {
+      ElMessage({
+        message: resp.data.result.name +'域名'+'DNS解析A记录成功' + resp.data.result.content,
+      })
+    }
+  }
+
 }
 
 </script>
