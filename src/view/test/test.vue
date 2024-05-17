@@ -3,7 +3,7 @@
 </template>
 
 <script >
-import {testT} from "@/api/test";
+import {testT} from "@/api/domain";
 
 export default {
     name: "Test",
