@@ -1,6 +1,6 @@
 <template>
   <div>
-  <el-form ref="domainForm" :model="domainInfo" :rules="rules">
+  <el-form ref="domainForm" :model="domainInfo" :rules="rules" label-width="120px">
       <el-form-item label="短域名">
         <el-input v-model="domainInfo.name" style="width: 240px"
               placeholder="请输入短域名"
