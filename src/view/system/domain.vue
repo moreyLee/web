@@ -12,7 +12,24 @@
               placeholder="请输入代理邀请链接"
               clearable
               />
+
       </el-form-item>
+    <!-- 下拉菜单 -->
+  <el-form-item label="DNS厂商" prop="name" >
+    <div class="flex flex-wrap items-center">
+      <el-dropdown size="default" v-model="state.DnsService" @command="handleCommand">
+        <el-button  style="width: 240px;" size="small">
+          {{state.DnsService}} <el-icon class="el-icon--right"><arrow-down /></el-icon>
+        </el-button>
+        <template #dropdown>
+          <el-dropdown-menu  style="width: 240px" >
+            <el-dropdown-item command="CloudFlare">CloudFlare</el-dropdown-item>
+            <el-dropdown-item command="GoDaddy.com">GoDaddy.com(开发中...)</el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
+    </div>
+  </el-form-item>
   <el-form-item class="btn">   <!-- 按钮区域定义一个类 按钮向右对齐-->
     <el-button type="primary" @click="submitDomain" style="width: 5%; margin-top: 5px">邀请代理</el-button>
   </el-form-item>
@@ -23,9 +40,20 @@
 import {ref, reactive} from 'vue'
 import {  domain, DnsRecord, pageRule} from "@/api/domain";
 import {ElMessage} from "element-plus";
+import { ElInput } from 'element-plus';
+import { ArrowDown } from '@element-plus/icons-vue'
+
 defineOptions({
   name: 'Domain',
 })
+
+const state = reactive({
+  DnsService: "CloudFlare",
+})
+const handleCommand = (command: string) => {
+  // console.log('click on item ' + command);
+  state.DnsService = command;
+}
 // 定义数据类型接口
 interface DomainInfo {
   name: string;
@@ -34,7 +62,7 @@ interface DomainInfo {
 // 定义了一个domainInfo的响应式变量
 // 其类型为 DomainInfo 描述domainInfo 的数据结构
 const domainInfo = ref<DomainInfo>({
-  name: "ss123.com",
+  name: "",
   jump_start : "true"
 })
 // 定义传入到后端的json body 中的数据  定义的数据
@@ -72,7 +100,7 @@ interface PageRule{
   priority: number
   status: string
 }
-// 交互式数据
+// 交互式数据 json
 const agent_link = ref<PageRule>({
   targets: [
     {
@@ -87,7 +115,7 @@ const agent_link = ref<PageRule>({
     {
       id: "forwarding_url",
       value: {
-        url: "https://wx.longwaysun.com/app/register.php?site_id=1053&inviteCode=133577",
+        url: "",
         status_code: 301
       }
     }
@@ -191,5 +219,10 @@ const submitDomain = async () => {
 
 </script>
 <style scoped lang="scss">
-
+.example-showcase .el-dropdown-link {
+  cursor: pointer;
+  color: var(--el-color-primary);
+  display: flex;
+  align-items: center;
+}
 </style>

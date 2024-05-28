@@ -48,35 +48,34 @@
               >
                 <el-input
                   v-model="loginFormData.password"
-                  show-password
                   size="large"
                   type="password"
                   placeholder="请输入密码"
                 />
               </el-form-item>
-<!--              <el-form-item-->
-<!--                v-if="loginFormData.openCaptcha"-->
-<!--                prop="captcha"-->
-<!--                class="mb-6"-->
-<!--              >-->
-<!--                <div class="flex w-full justify-between">-->
-<!--                  <el-input-->
-<!--                    v-model="loginFormData.captcha"-->
-<!--                    placeholder="请输入验证码"-->
-<!--                    size="large"-->
-<!--                    class="flex-1 mr-5"-->
-<!--                  />-->
-<!--                  <div class="w-1/3 h-11 bg-[#c3d4f2] rounded">-->
-<!--                    <img-->
-<!--                      v-if="picPath"-->
-<!--                      class="w-full h-full"-->
-<!--                      :src="picPath"-->
-<!--                      alt="请输入验证码"-->
-<!--                      @click="loginVerify()"-->
-<!--                    >-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </el-form-item>-->
+              <el-form-item
+                v-if="loginFormData.openCaptcha"
+                prop="captcha"
+                class="mb-6"
+              >
+                <div class="flex w-full justify-between">
+                  <el-input
+                    v-model="loginFormData.captcha"
+                    placeholder="请输入验证码"
+                    size="large"
+                    class="flex-1 mr-5"
+                  />
+                  <div class="w-1/3 h-11 bg-[#c3d4f2] rounded">
+                    <img
+                      v-if="picPath"
+                      class="w-full h-full"
+                      :src="picPath"
+                      alt="请输入验证码"
+                      @click="loginVerify()"
+                    >
+                  </div>
+                </div>
+              </el-form-item>
               <el-form-item class="mb-6">
                 <el-button
                   class="shadow shadow-blue-600 h-11 w-full"
@@ -105,57 +104,56 @@
       ></div>
     </div>
 
-    <BottomInfo class="left-0 right-0 absolute bottom-3 mx-auto  w-full z-20">
-      <div class="links items-center justify-center gap-2 hidden md:flex">
-        <a
-          href="http://doc.henrongyi.top/"
-          target="_blank"
-        >
-          <img
-            src="@/assets/docs.png"
-            class="w-8 h-8"
-            alt="文档"
-          >
-        </a>
-        <a
-          href="https://support.qq.com/product/371961"
-          target="_blank"
-        >
-          <img
-            src="@/assets/kefu.png"
-            class="w-8 h-8"
-            alt="客服"
-          >
-        </a>
-        <a
-          href="https://github.com/flipped-aurora/gin-vue-admin"
-          target="_blank"
-        >
-          <img
-            src="@/assets/github.png"
-            class="w-8 h-8"
-            alt="github"
-          >
-        </a>
-        <a
-          href="https://space.bilibili.com/322210472"
-          target="_blank"
-        >
-          <img
-            src="@/assets/video.png"
-            class="w-8 h-8"
-            alt="视频站"
-          >
-        </a>
-      </div>
-    </BottomInfo>
+<!--    <BottomInfo class="left-0 right-0 absolute bottom-3 mx-auto  w-full z-20">-->
+<!--      <div class="links items-center justify-center gap-2 hidden md:flex">-->
+<!--        <a-->
+<!--          href="http://doc.henrongyi.top/"-->
+<!--          target="_blank"-->
+<!--        >-->
+<!--          <img-->
+<!--            src="@/assets/docs.png"-->
+<!--            class="w-8 h-8"-->
+<!--            alt="文档"-->
+<!--          >-->
+<!--        </a>-->
+<!--        <a-->
+<!--          href="https://support.qq.com/product/371961"-->
+<!--          target="_blank"-->
+<!--        >-->
+<!--          <img-->
+<!--            src="@/assets/kefu.png"-->
+<!--            class="w-8 h-8"-->
+<!--            alt="客服"-->
+<!--          >-->
+<!--        </a>-->
+<!--        <a-->
+<!--          href="https://github.com/flipped-aurora/gin-vue-admin"-->
+<!--          target="_blank"-->
+<!--        >-->
+<!--          <img-->
+<!--            src="@/assets/github.png"-->
+<!--            class="w-8 h-8"-->
+<!--            alt="github"-->
+<!--          >-->
+<!--        </a>-->
+<!--        <a-->
+<!--          href="https://space.bilibili.com/322210472"-->
+<!--          target="_blank"-->
+<!--        >-->
+<!--          <img-->
+<!--            src="@/assets/video.png"-->
+<!--            class="w-8 h-8"-->
+<!--            alt="视频站"-->
+<!--          >-->
+<!--        </a>-->
+<!--      </div>-->
+<!--    </BottomInfo>-->
   </div>
 </template>
 
 <script setup>
-// import { captcha } from '@/api/user'
+import { captcha } from '@/api/user'
 import { checkDB } from '@/api/initdb'
-import BottomInfo from '@/view/layout/bottomInfo/bottomInfo.vue'
 import { reactive, ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
@@ -183,19 +181,19 @@ const checkPassword = (rule, value, callback) => {
 }
 
 // 获取验证码
-// const loginVerify = async() => {
-//   const ele = await captcha()
-//   rules.captcha.push({
-//     max: ele.data.captchaLength,
-//     min: ele.data.captchaLength,
-//     message: `请输入${ele.data.captchaLength}位验证码`,
-//     trigger: 'blur',
-//   })
-//   picPath.value = ele.data.picPath
-//   loginFormData.captchaId = ele.data.captchaId
-//   loginFormData.openCaptcha = ele.data.openCaptcha
-// }
-// loginVerify()
+const loginVerify = async() => {
+  const ele = await captcha()
+  rules.captcha.push({
+    max: ele.data.captchaLength,
+    min: ele.data.captchaLength,
+    message: `请输入${ele.data.captchaLength}位验证码`,
+    trigger: 'blur',
+  })
+  picPath.value = ele.data.picPath
+  loginFormData.captchaId = ele.data.captchaId
+  loginFormData.openCaptcha = ele.data.openCaptcha
+}
+loginVerify()
 
 // 登录相关操作
 const loginForm = ref(null)
@@ -203,19 +201,19 @@ const picPath = ref('')
 const loginFormData = reactive({
   username: 'admin',
   password: '123456',
-  // captcha: '',
-  // captchaId: '',
-  // openCaptcha: false,
+  captcha: '',
+  captchaId: '',
+  openCaptcha: false,
 })
 const rules = reactive({
   username: [{ validator: checkUsername, trigger: 'blur' }],
   password: [{ validator: checkPassword, trigger: 'blur' }],
-  // captcha: [
-  //   {
-  //     message: '验证码格式不正确',
-  //     trigger: 'blur',
-  //   },
-  // ],
+  captcha: [
+    {
+      message: '验证码格式不正确',
+      trigger: 'blur',
+    },
+  ],
 })
 
 const userStore = useUserStore()
