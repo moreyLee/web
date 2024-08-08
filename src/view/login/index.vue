@@ -199,8 +199,8 @@ loginVerify()
 const loginForm = ref(null)
 const picPath = ref('')
 const loginFormData = reactive({
-  username: '',
-  password: '',
+  username: 'admin',
+  password: '123456',
   captcha: '',
   captchaId: '',
   openCaptcha: false,

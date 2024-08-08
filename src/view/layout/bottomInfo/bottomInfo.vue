@@ -7,7 +7,7 @@
       <a
         class="text-gray-800 font-bold"
         href="https://github.com/flipped-aurora/gin-vue-admin"
-      >Gin-Vue-Admin</a>
+      >CG-Vue-Admin</a>
     </span>
     <slot />
     <span>Copyright</span>
@@ -15,7 +15,7 @@
       <a
         class="text-gray-800 font-bold"
         href="https://github.com/flipped-aurora"
-      >flipped-aurora团队</a>
+      >CG运维团队</a>
     </span>
   </div>
 </template>
