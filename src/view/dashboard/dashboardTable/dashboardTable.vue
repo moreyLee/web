@@ -70,10 +70,6 @@ loadCommits()
           justify-content: center;
         }
         .key{
-          &.top{
-            background: #314659;
-            color: #FFFFFF;;
-          }
           display: inline-flex;
           justify-content: center;
           align-items: center;
@@ -82,7 +78,12 @@ loadCommits()
           border-radius: 50%;
           background: #F0F2F5;
           text-align: center;
-          color:rgba($color: #000000, $alpha: 0.65)
+          color:rgba($color: #000000, $alpha: 0.65);
+          &.top{
+            background: #314659;
+            color: #FFFFFF;;
+          }
+
         }
         .message{
           color: rgba(0, 0, 0, 0.65);

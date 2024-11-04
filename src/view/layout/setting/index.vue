@@ -91,9 +91,6 @@ const changeMode = (e) => {
 <style lang="scss" scoped>
 .drawer-container {
   transition: all 0.2s;
-  &:hover{
-    right: 0
-  }
   position: fixed;
   right: -20px;
   bottom: 15%;
@@ -107,6 +104,9 @@ const changeMode = (e) => {
   border-radius: 4px 0 0 4px;
   cursor: pointer;
   -webkit-box-shadow: inset 0 0 6px rgba(0 ,0 ,0, 10%);
+  &:hover{
+    right: 0
+  }
 }
 .setting_body{
   padding: 20px;

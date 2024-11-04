@@ -219,10 +219,19 @@ const toTarget = (name) => {
               @apply mt-4 text-gray-600 text-lg;
             }
             &-item{
-              +.gva-top-card-left-item{
-                margin-top: 24px;
+              & {
+                +.gva-top-card-left-item{
+                  margin-top: 24px;
+                }
               }
-              margin-top: 14px;
+              //+.gva-top-card-left-item{
+              //  margin-top: 24px;
+              //}
+              & {
+                margin-top: 14px;
+
+              }
+              //margin-top: 14px;
             }
         }
         &-right {
