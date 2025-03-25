@@ -40,10 +40,10 @@
     },
     "devDependencies": {
         "@babel/eslint-parser": "^7.22.9",
-        "@vitejs/plugin-legacy": "^4.1.0",
-        "@vitejs/plugin-vue": "^4.2.3",
-        "@vue/cli-plugin-babel": "~5.0.8",
-        "@vue/cli-plugin-eslint": "~5.0.8",
+        "@vitejs/plugin-legacy": "^6.0.2",
+        "@vitejs/plugin-vue": "^5.2.3",
+        "@vue/cli-plugin-babel": "^3.12.1",
+        "@vue/cli-plugin-eslint": "^3.12.1",
         "@vue/cli-plugin-router": "~5.0.8",
         "@vue/cli-plugin-vuex": "~5.0.8",
         "@vue/cli-service": "^3.3.1",
@@ -53,11 +53,11 @@
         "dotenv": "^16.3.1",
         "eslint": "^8.49.0",
         "eslint-plugin-vue": "^9.15.1",
-        "sass": "^1.54.0",
+        "sass": "^1.60.0",
         "terser": "^5.19.1",
         "unplugin-auto-import": "^0.16.6",
         "unplugin-vue-components": "^0.25.1",
-        "vite": "^4.4.6",
+        "vite": "^6.2.3",
         "vite-plugin-banner": "^0.7.0",
         "vite-plugin-importer": "^0.2.5"
     }

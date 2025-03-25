@@ -62,6 +62,7 @@ export default ({
       // 如果使用docker-compose开发模式，设置为false
       open: true,
       port: process.env.VITE_CLI_PORT,
+      allowedHosts:["devops.w776.cc"],
       proxy: {
         // 把key的路径代理到target位置
         // detail: https://cli.vuejs.org/config/#devserver-proxy
