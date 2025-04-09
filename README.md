@@ -101,3 +101,10 @@ web
 ```
 升级 sass  版本到 1.60.0
 npm audit fix --force
+升级 vite 4 到 6.2.3 默认使用 ESM(ECMAScript Modules)  推荐import 方式导入 
+vite 6.2.3 
+ 待优化   vite.config.js   需要修改 require 相关的代码  整个项目都变成 ESM
+{
+"type": "module"
+}
+

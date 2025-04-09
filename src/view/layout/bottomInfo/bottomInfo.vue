@@ -2,14 +2,14 @@
 
 <template>
   <div class="flex gap-4 items-center text-sm text-gray-500 justify-center mb-4">
-    <span>Powered by</span>
-    <span>
-      <a
-        class="text-gray-800 font-bold"
-        href="https://github.com/flipped-aurora/gin-vue-admin"
-      >CG-Vue-Admin</a>
-    </span>
-    <slot />
+<!--    <span>Powered by</span>-->
+<!--    <span>-->
+<!--      <a-->
+<!--        class="text-gray-800 font-bold"-->
+<!--        href="https://github.com/flipped-aurora/gin-vue-admin"-->
+<!--      >CG-Vue-Admin</a>-->
+<!--    </span>-->
+<!--    <slot />-->
     <span>Copyright</span>
     <span>
       <a
